@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  nextjs_auth_app_db:
+    image: postgres
+    restart: always  # Ensure the container always restarts if it stops
+    environment:
+      POSTGRES_PASSWORD: password  # Set the database password
+      POSTGRES_DB: nextjs_auth_app_db  # Set the database name (optional)
+    ports:
+      - "5432:5432"  # Map container port 5432 to host port 5432
+    volumes:
+      - db-data:/var/lib/postgresql/data  # Create a named volume to persist data
+
+volumes:
+  db-data:  # Define the named volume
